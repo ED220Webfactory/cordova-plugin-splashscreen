@@ -103,7 +103,6 @@ public class SplashScreen extends CordovaPlugin {
                 getView().setVisibility(View.INVISIBLE);
             }
         });
-        int drawableId = getSplashId();
 
         // Save initial orientation.
         orientation = cordova.getActivity().getResources().getConfiguration().orientation;
@@ -193,7 +192,8 @@ public class SplashScreen extends CordovaPlugin {
             }
         } else if ("spinner".equals(id)) {
             if ("stop".equals(data.toString())) {
-                getView().setVisibility(View.VISIBLE);
+                new RuntimeException().printStackTrace();
+                //getView().setVisibility(View.VISIBLE);
             }
         } else if ("onReceivedError".equals(id)) {
             this.spinnerStop();
