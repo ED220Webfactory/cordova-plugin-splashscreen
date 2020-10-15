@@ -192,8 +192,8 @@ public class SplashScreen extends CordovaPlugin {
             }
         } else if ("spinner".equals(id)) {
             if ("stop".equals(data.toString())) {
-                new RuntimeException().printStackTrace();
-                //getView().setVisibility(View.VISIBLE);
+                //new RuntimeException().printStackTrace();
+                getView().setVisibility(View.VISIBLE);
             }
         } else if ("onReceivedError".equals(id)) {
             this.spinnerStop();
@@ -272,6 +272,10 @@ public class SplashScreen extends CordovaPlugin {
         final int effectiveSplashDuration = Math.max(0, splashscreenTime - fadeSplashScreenDuration);
 
         lastHideAfterDelay = hideAfterDelay;
+
+        if(effectiveSplashDuration > 0) {
+            return;
+        }
 
         // Prevent to show the splash dialog if the activity is in the process of finishing
         if (cordova.getActivity().isFinishing()) {
